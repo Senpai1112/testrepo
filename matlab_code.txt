@@ -1,0 +1,36 @@
+p = 4; wn = sqrt(2); T = 0.2;
+Tx = [0.2 : 0.01 : 5 ]';
+Kcondl = zeros(size(Tx));
+KCondll = [-50 : 0.1 : 50];
+Tx2 = zeros(size(Kcondll));
+Kcond2 = 2*p^z*(1 + exp(p*Tx))./(p*Tx*(1+exp(-p*Tx))-2.*(1-exp(-p*Tx));
+Kcond2 = Kcond2/(wn^2);
+Kcond3 = p^2.*(1-exp(-p*Tx))./(1-exp(-p*Tx).*(1+p*Tx));
+Kcond3 = Kcond3/(wn^2);
+Kcond4 = -p^2.*(1+exp(-p*Tx)./(1-exp(-p*Tx).*(1+p*Tx));
+Kcond4 = Kcond4/(wn^2);
+figure(1);
+plot(Tx,Kcond3,'g-'); hold on;
+plot(Tx,Kcond1,'b-'); hold on;
+plot(Tx,Kcond2,'k-'); hold on;
+plot(Tx2,Kcondll,'y-'); hold on;
+plot(Tx,Kcond4,'r-');
+
+for k = 1 : length(Tx)
+	er = Kcond2(k) - Kcond3(k);
+	if (er <= 0) k23= k ;break ; end;
+end;
+Tc = 0.2;
+kc2 = 2*p^2*(1+ exp(-p^Tx)./(p*Tx*(1+exp(-p*Tx))-2.*(1-exp(-p*Tx));
+kc3 = p^2*(1-exp(-p*Tc));
+if(Tc <= Tx(k23)) kc = kc3;
+else if (Tc >= Tx(k23)) kc = kc2; end;
+
+for M = 1 : length(Tx)
+	if(M <=k23)
+		plot([Tx(M) Tx(M)] , [0 Kcond3(M)]);
+		N = m;
+	else if (M >k23)
+		plot([Tx(M) Tx(M)] , [0 Kcond2(M)]);
+	end
+ends 
